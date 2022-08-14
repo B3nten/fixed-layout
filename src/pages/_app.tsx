@@ -15,9 +15,11 @@ function FixedLayout({ children }: { children?: React.ReactNode }) {
 
   useIsomorphicLayoutEffect(()=>{
     function handler(){
-      window.scrollTo(0,0)
+      console.log(document.body.scrollHeight - window.innerHeight )
+      // window.scrollTo(0,0)
     }
     window.addEventListener('scroll', debounce(handler,200))
+    setTimeout(()=>window.scrollTo(0,document.body.scrollHeight - window.innerHeight), 5000)
     return ()=>window.removeEventListener('scroll', debounce(handler,200))
   },[])
 

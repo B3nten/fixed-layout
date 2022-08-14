@@ -1,3 +1,4 @@
+import { useDrag } from '@use-gesture/react';
 import { useEffect, useLayoutEffect, useRef } from 'react'
 import '../styles/globals.css'
 
@@ -25,12 +26,15 @@ function FixedLayout({ children }: { children?: React.ReactNode }) {
 	//   return ()=>window.removeEventListener('scroll', debounce(handler,200))
 	// },[])
 
+  const bind = useDrag(()=>console.log('dragging'))
+
 	return (
 		<div
+      {...bind()}
 			ref={scrollContainer}
 			style={{
 				width: '100%',
-				height: '101vh',
+				height: '100vh',
 				position: 'relative',
 			}}>
 			<div

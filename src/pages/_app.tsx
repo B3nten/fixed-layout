@@ -14,12 +14,15 @@ function FixedLayout({ children }: { children?: React.ReactNode }) {
   const scrollContainer = useRef<HTMLDivElement>(null);
 
   useIsomorphicLayoutEffect(()=>{
+
     function handler(){
-      console.log(document.body.scrollHeight - window.innerHeight )
-      // window.scrollTo(0,0)
+      if(document.body.scrollHeight - window.innerHeight >= window.scrollY) {
+        document.body.style.overflow = 'hidden';
+        setTimeout(()=>document.body.style.overflow = 'scroll', 200)
+      }
     }
+
     window.addEventListener('scroll', debounce(handler,200))
-    setTimeout(()=>window.scrollTo(0,document.body.scrollHeight - window.innerHeight), 5000)
     return ()=>window.removeEventListener('scroll', debounce(handler,200))
   },[])
 

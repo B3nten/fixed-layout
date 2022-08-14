@@ -20,8 +20,12 @@ const Home: NextPage = () => {
 
 	const bind = useDrag(
 		(args: any) => {
-			// scrollContainer.current!.style.transform = `translateY(-${clamp(-1*args.offset[1], 0, scrollContainer.current!.scrollHeight)}px)`
-		}
+			scrollContainer.current!.style.transform = `translateY(-${clamp(-1*args.offset[1], 0, scrollContainer.current!.scrollHeight)}px)`
+		}, 
+    {
+      target: scrollContainer.current!,
+      eventOptions: { passive: false },
+    }
 	)
 
 	return (
@@ -44,7 +48,7 @@ const Home: NextPage = () => {
 						documentation='https://nextjs.org/'
 					/>
 					<div className='w-full h-96 bg-red-300 overflow-hidden touch-none'>
-						<div {...bind()}>
+						<div>
 							<div ref={scrollContainer}>
 								{Array.from({ length: 30 }).map((_, i) => (
 									<div key={i} className='w-full h-10 bg-blue-400 my-4'></div>

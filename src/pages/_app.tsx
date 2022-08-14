@@ -13,18 +13,18 @@ function FixedLayout({ children }: { children?: React.ReactNode }) {
 
   const scrollContainer = useRef<HTMLDivElement>(null);
 
-  useIsomorphicLayoutEffect(()=>{
+  // useIsomorphicLayoutEffect(()=>{
 
-    function handler(){
-      if(document.body.scrollHeight - window.innerHeight >= window.scrollY) {
-        document.body.style.overflow = 'hidden';
-        setTimeout(()=>document.body.style.overflow = 'scroll', 200)
-      }
-    }
+  //   function handler(){
+  //     if(document.body.scrollHeight - window.innerHeight >= window.scrollY) {
+  //       document.body.style.overflow = 'hidden';
+  //       setTimeout(()=>document.body.style.overflow = 'scroll', 200)
+  //     }
+  //   }
 
-    window.addEventListener('scroll', debounce(handler,200))
-    return ()=>window.removeEventListener('scroll', debounce(handler,200))
-  },[])
+  //   window.addEventListener('scroll', debounce(handler,200))
+  //   return ()=>window.removeEventListener('scroll', debounce(handler,200))
+  // },[])
 
 	return (
 		<div

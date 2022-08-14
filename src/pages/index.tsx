@@ -27,6 +27,10 @@ const Home: NextPage = () => {
             description="The React framework for production"
             documentation="https://nextjs.org/"
           />
+          <div className='w-full h-96 bg-red-300 overflow-y-scroll'>
+            {Array.from({length: 30}).map((_, i)=><div key={i} className='w-full h-10 bg-blue-400 my-4'></div>)}
+
+          </div>
           <TechnologyCard
             name="TypeScript"
             description="Strongly typed programming language that builds on JavaScript, giving you better tooling at any scale"

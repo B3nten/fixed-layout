@@ -12,9 +12,10 @@ const useIsomorphicLayoutEffect = typeof window !== 'undefined' ? useLayoutEffec
 const Home: NextPage = () => {
 	const scrollRef = useRef<HTMLDivElement>(null)
 
-	const bind = useDrag(e => {
+	useDrag(e => {
     console.log(e)
   },{
+    target: globalThis,
     pointer: {
       touch: true
     }
@@ -39,7 +40,7 @@ const Home: NextPage = () => {
 						description='The React framework for production'
 						documentation='https://nextjs.org/'
 					/>
-					<div {...bind()} className='w-full h-96 bg-red-300 overflow-hidden'>
+					<div className='w-full h-96 bg-red-300 overflow-y-scroll'>
 						<div ref={scrollRef}>
 							{Array.from({ length: 30 }).map((_, i) => (
 								<div key={i} className='w-full h-10 bg-blue-400 my-4'></div>

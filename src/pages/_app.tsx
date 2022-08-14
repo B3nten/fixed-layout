@@ -17,10 +17,11 @@ function FixedLayout({ children }: { children?: React.ReactNode }) {
 		// 		height: '150vh',
 		// 		position: 'relative',
 		// 	}}>
-			<div style={{ position: 'sticky', width: '100%', height: '100vh', top: 0, overflow: 'hidden' }}>
+			// <div style={{ position: 'sticky', width: '100%', height: '100vh', top: 0, overflow: 'hidden' }}>
+      <div>
 				{children}
-			{/* </div>
-		</div> */}
+			</div>
+		// </div>
 		// </div>
 	)
 }

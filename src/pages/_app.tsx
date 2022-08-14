@@ -25,36 +25,28 @@ function FixedLayout({ children }: { children?: React.ReactNode }) {
 	//   return ()=>window.removeEventListener('scroll', debounce(handler,200))
 	// },[])
 
-	// return (
-	// 	<div
-	// 		ref={scrollContainer}
-	// 		style={{
-	// 			width: '100%',
-	// 			height: 'calc(100vh + 1px)',
-	// 			position: 'relative',
-	// 		}}>
-	// 		<div
-	// 			style={{
-	// 				position: 'sticky',
-	// 				width: '100%',
-	// 				height: '100vh',
-	// 				top: 0,
-	// 				overflow: 'hidden',
-	// 			}}>
-	// 			{children}
-	// 		</div>
-	// 	</div>
-	// )
+	return (
+		<div
+			ref={scrollContainer}
+			style={{
+				width: '100%',
+				height: '101vh',
+				position: 'relative',
+			}}>
+			<div
+				style={{
+					position: 'sticky',
+					width: '100%',
+					height: '100vh',
+					top: 0,
+					overflow: 'hidden',
+				}}>
+				{children}
+			</div>
+		</div>
+	)
 
-  return(
-    <div style={{
-      width: '100%',
-      height: 'calc(100vh + 1px)',
-      overflow: 'hidden'
-    }}>
-      {children}
-    </div>
-  )
+
 }
 
 function debounce(func: any, wait: any, immediate?: any) {

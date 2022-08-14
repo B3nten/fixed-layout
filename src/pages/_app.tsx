@@ -47,6 +47,7 @@ function debounce(func:any, wait:any, immediate?: any) {
   //@ts-ignore
   var timeout;
   return function() {
+    //@ts-ignore
   	var context = this, args = arguments;
     //@ts-ignore
   	clearTimeout(timeout);

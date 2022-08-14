@@ -20,8 +20,7 @@ const Home: NextPage = () => {
 
 	const bind = useDrag(
 		(args: any) => {
-			console.log(clamp(-1*args.offset[1], 0, scrollContainer.current!.scrollHeight))
-			scrollContainer.current!.style.transform = `translateY(-${clamp(-1*args.offset[1], 0, scrollContainer.current!.scrollHeight)}px)`
+			// scrollContainer.current!.style.transform = `translateY(-${clamp(-1*args.offset[1], 0, scrollContainer.current!.scrollHeight)}px)`
 		}
 	)
 

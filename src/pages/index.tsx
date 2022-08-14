@@ -12,14 +12,23 @@ type TechnologyCardProps = {
 const useIsomorphicLayoutEffect = typeof window !== 'undefined' ? useLayoutEffect : useEffect
 
 const Home: NextPage = () => {
+	const scrollContainer = useRef<HTMLDivElement>(null)
 
-  const bind = useDrag(() => {
-    console.log('dragging')
-  }, {
-    pointer: {
-      touch: true
-    }
-  })
+	function clamp(value: number, min: number, max: number) {
+		return Math.min(Math.max(value, min), max)
+	}
+
+	const bind = useDrag(
+		(args: any) => {
+			console.log(clamp(-1*args.offset[1], 0, scrollContainer.current!.scrollHeight))
+			scrollContainer.current!.style.transform = `translateY(-${clamp(-1*args.offset[1], 0, scrollContainer.current!.scrollHeight)}px)`
+		},
+		{
+			pointer: {
+				touch: true,
+			},
+		}
+	)
 
 	return (
 		<>
@@ -42,9 +51,11 @@ const Home: NextPage = () => {
 					/>
 					<div className='w-full h-96 bg-red-300 overflow-hidden'>
 						<div {...bind()}>
-							{Array.from({ length: 30 }).map((_, i) => (
-								<div key={i} className='w-full h-10 bg-blue-400 my-4'></div>
-							))}
+							<div ref={scrollContainer}>
+								{Array.from({ length: 30 }).map((_, i) => (
+									<div key={i} className='w-full h-10 bg-blue-400 my-4'></div>
+								))}
+							</div>
 						</div>
 					</div>
 					<TechnologyCard

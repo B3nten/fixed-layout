@@ -13,7 +13,7 @@ function FixedLayout({ children }: { children?: React.ReactNode }) {
 		<div
 			style={{
 				width: '100%',
-				height: '150vh',
+				height: '101vh',
 				position: 'relative',
 			}}>
 			<div

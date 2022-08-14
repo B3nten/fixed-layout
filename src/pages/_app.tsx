@@ -30,7 +30,7 @@ function FixedLayout({ children }: { children?: React.ReactNode }) {
 			ref={scrollContainer}
 			style={{
 				width: '100%',
-				height: '100vh',
+				height: '110vh',
 				position: 'relative',
 			}}>
 			<div

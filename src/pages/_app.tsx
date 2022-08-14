@@ -1,4 +1,4 @@
-import { useEffect, useLayoutEffect, useRef } from 'react';
+import { useEffect, useLayoutEffect, useRef } from 'react'
 import '../styles/globals.css'
 
 export default function App({ Component, pageProps }: { Component: any; pageProps: any }) {
@@ -10,25 +10,24 @@ export default function App({ Component, pageProps }: { Component: any; pageProp
 }
 
 function FixedLayout({ children }: { children?: React.ReactNode }) {
+	const scrollContainer = useRef<HTMLDivElement>(null)
 
-  const scrollContainer = useRef<HTMLDivElement>(null);
+	// useIsomorphicLayoutEffect(()=>{
 
-  // useIsomorphicLayoutEffect(()=>{
+	//   function handler(){
+	//     if(document.body.scrollHeight - window.innerHeight >= window.scrollY) {
+	//       document.body.style.overflow = 'hidden';
+	//       setTimeout(()=>document.body.style.overflow = 'scroll', 200)
+	//     }
+	//   }
 
-  //   function handler(){
-  //     if(document.body.scrollHeight - window.innerHeight >= window.scrollY) {
-  //       document.body.style.overflow = 'hidden';
-  //       setTimeout(()=>document.body.style.overflow = 'scroll', 200)
-  //     }
-  //   }
-
-  //   window.addEventListener('scroll', debounce(handler,200))
-  //   return ()=>window.removeEventListener('scroll', debounce(handler,200))
-  // },[])
+	//   window.addEventListener('scroll', debounce(handler,200))
+	//   return ()=>window.removeEventListener('scroll', debounce(handler,200))
+	// },[])
 
 	return (
 		<div
-      ref={scrollContainer}
+			ref={scrollContainer}
 			style={{
 				width: '100%',
 				height: '101vh',
@@ -48,22 +47,21 @@ function FixedLayout({ children }: { children?: React.ReactNode }) {
 	)
 }
 
-function debounce(func:any, wait:any, immediate?: any) {
-  //@ts-ignore
-  var timeout;
-  return function() {
-    //@ts-ignore
-  	var context = this, args = arguments;
-    //@ts-ignore
-  	clearTimeout(timeout);
-  	timeout = setTimeout(function() {
-  		timeout = null;
-  		if (!immediate) func.apply(context, args);
-  	}, wait);
-  	if (immediate && !timeout) func.apply(context, args);
-  };
+function debounce(func: any, wait: any, immediate?: any) {
+	//@ts-ignore
+	var timeout
+	return function () {
+		//@ts-ignore
+		var context = this,
+			args = arguments
+		//@ts-ignore
+		clearTimeout(timeout)
+		timeout = setTimeout(function () {
+			timeout = null
+			if (!immediate) func.apply(context, args)
+		}, wait)
+		if (immediate && !timeout) func.apply(context, args)
+	}
 }
 
-const useIsomorphicLayoutEffect =
-
-  typeof window !== 'undefined' ? useLayoutEffect : useEffect
+const useIsomorphicLayoutEffect = typeof window !== 'undefined' ? useLayoutEffect : useEffect

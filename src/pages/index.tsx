@@ -20,12 +20,17 @@ const Home: NextPage = () => {
 
 	const bind = useDrag(
 		(args: any) => {
-			scrollContainer.current!.style.transform = `translateY(-${clamp(-1*args.offset[1], 0, scrollContainer.current!.scrollHeight)}px)`
-		}, 
-    {
-      target: scrollContainer.current!,
-      eventOptions: { passive: false },
-    }
+			scrollContainer.current!.style.transform = `translateY(-${clamp(
+				-1 * args.offset[1],
+				0,
+				scrollContainer.current!.scrollHeight
+			)}px)`
+		},
+		{
+      pointer: {
+        touch: true,
+      }
+		}
 	)
 
 	return (
@@ -47,13 +52,11 @@ const Home: NextPage = () => {
 						description='The React framework for production'
 						documentation='https://nextjs.org/'
 					/>
-					<div className='w-full h-96 bg-red-300 overflow-hidden touch-none'>
-						<div>
-							<div ref={scrollContainer}>
-								{Array.from({ length: 30 }).map((_, i) => (
-									<div key={i} className='w-full h-10 bg-blue-400 my-4'></div>
-								))}
-							</div>
+					<div {...bind()} className='w-full h-96 bg-red-300 overflow-hidden touch-none'>
+						<div ref={scrollContainer}>
+							{Array.from({ length: 30 }).map((_, i) => (
+								<div key={i} className='w-full h-10 bg-blue-400 my-4'></div>
+							))}
 						</div>
 					</div>
 					<TechnologyCard

@@ -18,17 +18,17 @@ const Home: NextPage = () => {
 		return Math.min(Math.max(value, min), max)
 	}
 
-	const bind = useDrag(
-		(args: any) => {
-			console.log(clamp(-1*args.offset[1], 0, scrollContainer.current!.scrollHeight))
-			scrollContainer.current!.style.transform = `translateY(-${clamp(-1*args.offset[1], 0, scrollContainer.current!.scrollHeight)}px)`
-		},
-		{
-			pointer: {
-				touch: true,
-			},
-		}
-	)
+	// const bind = useDrag(
+	// 	(args: any) => {
+	// 		console.log(clamp(-1*args.offset[1], 0, scrollContainer.current!.scrollHeight))
+	// 		scrollContainer.current!.style.transform = `translateY(-${clamp(-1*args.offset[1], 0, scrollContainer.current!.scrollHeight)}px)`
+	// 	},
+	// 	{
+	// 		pointer: {
+	// 			touch: true,
+	// 		},
+	// 	}
+	// )
 
 	return (
 		<>
@@ -49,7 +49,7 @@ const Home: NextPage = () => {
 						description='The React framework for production'
 						documentation='https://nextjs.org/'
 					/>
-					<div className='w-full h-96 bg-red-300 overflow-hidden'>
+					{/* <div className='w-full h-96 bg-red-300 overflow-hidden'>
 						<div {...bind()}>
 							<div ref={scrollContainer}>
 								{Array.from({ length: 30 }).map((_, i) => (
@@ -57,7 +57,7 @@ const Home: NextPage = () => {
 								))}
 							</div>
 						</div>
-					</div>
+					</div> */}
 					<TechnologyCard
 						name='TypeScript'
 						description='Strongly typed programming language that builds on JavaScript, giving you better tooling at any scale'
